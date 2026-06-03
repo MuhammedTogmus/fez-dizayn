@@ -32,14 +32,14 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
         className={`fixed top-0 left-0 w-full z-[50] transition-all duration-500 pointer-events-auto ${
-          scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'
+          scrolled ? 'bg-[#110e0a]/90 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12 lg:px-16">
           
           {/* Logo routes to home via next/link */}
           <Link href="/" className="relative z-[60]" onClick={() => setMobileOpen(false)}>
-            <span className="font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold text-[#f5f0eb] uppercase">
+            <span className="font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold text-[#f2ebe3] uppercase">
               Fez Dizayn
             </span>
           </Link>
@@ -49,7 +49,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="group relative text-sm tracking-[0.15em] text-[#f5f0eb]/80 uppercase transition-colors hover:text-[#c9a96e]"
+                className="group relative text-sm tracking-[0.15em] text-[#f2ebe3]/80 uppercase transition-colors hover:text-[#c9a96e]"
               >
                 {link.label}
                 <span className="absolute -bottom-2 left-0 h-[1px] w-0 bg-[#c9a96e] transition-all duration-300 group-hover:w-full" />
@@ -63,15 +63,15 @@ export default function Navbar() {
             aria-label="Menüyü Aç/Kapat"
           >
             <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 9, backgroundColor: '#c9a96e' } : { rotate: 0, y: 0, backgroundColor: '#f5f0eb' }}
+              animate={mobileOpen ? { rotate: 45, y: 9, backgroundColor: '#c9a96e' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3' }}
               className="block h-[2px] w-8 origin-center transition-colors"
             />
             <motion.span
               animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-[2px] w-8 bg-[#f5f0eb]"
+              className="block h-[2px] w-8 bg-[#f2ebe3]"
             />
             <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -9, backgroundColor: '#c9a96e' } : { rotate: 0, y: 0, backgroundColor: '#f5f0eb' }}
+              animate={mobileOpen ? { rotate: -45, y: -9, backgroundColor: '#c9a96e' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3' }}
               className="block h-[2px] w-8 origin-center transition-colors"
             />
           </button>
@@ -85,7 +85,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as any }}
-            className="fixed inset-0 z-[40] flex flex-col items-center justify-center bg-[#0a0a0a] px-6 pointer-events-auto"
+            className="fixed inset-0 z-[40] flex flex-col items-center justify-center bg-[#110e0a] px-6 pointer-events-auto"
           >
             <div className="flex flex-col gap-8 text-center">
               {navLinks.map((link, i) => (
@@ -99,7 +99,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="font-serif text-4xl sm:text-5xl tracking-widest text-[#f5f0eb] hover:text-[#c9a96e] transition-colors"
+                    className="font-serif text-4xl sm:text-5xl tracking-widest text-[#f2ebe3] hover:text-[#c9a96e] transition-colors"
                   >
                     {link.label}
                   </Link>

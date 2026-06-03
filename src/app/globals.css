@@ -5,19 +5,21 @@
    ============================================ */
 
 @theme inline {
-  /* Colors */
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #141414;
-  --color-bg-card: #1a1a1a;
-  --color-bg-elevated: #1f1f1f;
-  --color-text-primary: #f5f0eb;
-  --color-text-secondary: #a39e99;
-  --color-text-muted: #6b6560;
+  /* Colors — Warm Wood Design Palette */
+  --color-bg-primary: #110e0a;
+  --color-bg-secondary: #1a1510;
+  --color-bg-card: #211c15;
+  --color-bg-elevated: #28221a;
+  --color-text-primary: #f2ebe3;
+  --color-text-secondary: #b5a898;
+  --color-text-muted: #7a6e60;
   --color-accent-gold: #c9a96e;
   --color-accent-gold-light: #d4b97a;
   --color-accent-gold-dark: #b8944f;
-  --color-border: #2a2a2a;
-  --color-border-light: #333333;
+  --color-accent-walnut: #8b6f47;
+  --color-accent-amber: #d4a24e;
+  --color-border: #2e2720;
+  --color-border-light: #3d332a;
 
   /* Fonts */
   --font-serif: var(--font-playfair);
@@ -43,7 +45,7 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0a0a0a;
+  background-color: #110e0a;
   color-scheme: dark;
 }
 

@@ -27,7 +27,7 @@ export default function Services() {
   return (
     <section
       id="hizmetler"
-      className="w-full bg-[#141414] py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
+      className="w-full bg-[#1a1510] py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
         {/* Sol Sütun: Başlık */}
@@ -46,7 +46,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f5f0eb] leading-tight sticky top-32"
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f2ebe3] leading-tight sticky top-32"
           >
             Uzmanlık Alanlarımız
           </motion.h2>
@@ -76,8 +76,8 @@ export default function Services() {
                     <h3
                       className={`font-serif text-2xl md:text-3xl lg:text-4xl transition-colors duration-500 ${
                         isActive
-                          ? 'text-[#f5f0eb]'
-                          : 'text-[#f5f0eb]/40 group-hover:text-[#f5f0eb]/70'
+                          ? 'text-[#f2ebe3]'
+                          : 'text-[#f2ebe3]/40 group-hover:text-[#f2ebe3]/70'
                       }`}
                     >
                       {service.title}
@@ -104,7 +104,7 @@ export default function Services() {
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }}
                       className="overflow-hidden"
                     >
-                      <p className="pt-6 pl-[3.5rem] md:pl-[4.5rem] text-[#a39e99] max-w-xl text-sm md:text-base leading-relaxed">
+                      <p className="pt-6 pl-[3.5rem] md:pl-[4.5rem] text-[#b5a898] max-w-xl text-sm md:text-base leading-relaxed">
                         {service.desc}
                       </p>
                     </motion.div>
