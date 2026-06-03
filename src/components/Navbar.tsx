@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 const navLinks = [
   { label: 'Hakkımızda', href: '#hakkimizda' },
@@ -14,160 +15,99 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Kaydırma (scroll) efekti ve mobil menüde arka planın kilitlenmesi
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
   }, [mobileOpen]);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <>
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }}
-        className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ease-out ${
-          scrolled
-            ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5'
-            : 'bg-transparent'
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-12">
-          {/* Logo */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="relative z-50"
-          >
-            <motion.span
-              className="font-serif text-xl tracking-[0.3em] font-semibold text-[#f5f0eb] uppercase select-none"
-              whileHover={{ letterSpacing: '0.4em' }}
-              transition={{ duration: 0.3 }}
-            >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12 lg:px-16">
+          <Link href="/" className="relative z-[60]" onClick={() => setMobileOpen(false)}>
+            <span className="font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold text-[#f5f0eb] uppercase">
               Fez Dizayn
-            </motion.span>
-          </a>
+            </span>
+          </Link>
 
-          {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-10">
+          {/* Masaüstü Navigasyon */}
+          <nav className="hidden md:flex gap-10">
             {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="group relative text-[#f5f0eb]/80 text-sm tracking-[0.15em] uppercase font-light transition-colors duration-300 hover:text-[#c9a96e]"
-                >
-                  {link.label}
-                  {/* Underline animation */}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#c9a96e] transition-all duration-500 ease-out group-hover:w-full" />
-                </a>
-              </li>
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group relative text-sm tracking-[0.15em] text-[#f5f0eb]/80 uppercase transition-colors hover:text-[#c9a96e]"
+              >
+                {link.label}
+                <span className="absolute -bottom-2 left-0 h-[1px] w-0 bg-[#c9a96e] transition-all duration-300 group-hover:w-full" />
+              </Link>
             ))}
-          </ul>
+          </nav>
 
-          {/* Hamburger Button */}
+          {/* Hamburger Menü İkonu */}
           <button
-            onClick={() => setMobileOpen((prev) => !prev)}
-            className="relative z-50 flex md:hidden flex-col items-center justify-center w-10 h-10 gap-[6px]"
-            aria-label={mobileOpen ? 'Menüyü kapat' : 'Menüyü aç'}
+            className="relative z-[60] flex md:hidden flex-col items-center justify-center w-10 h-10 gap-2"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Menüyü Aç/Kapat"
           >
             <motion.span
-              animate={
-                mobileOpen
-                  ? { rotate: 45, y: 8, backgroundColor: '#f5f0eb' }
-                  : { rotate: 0, y: 0, backgroundColor: '#f5f0eb' }
-              }
-              transition={{ duration: 0.3 }}
-              className="block h-[1.5px] w-6 origin-center"
+              animate={mobileOpen ? { rotate: 45, y: 9, backgroundColor: '#c9a96e' } : { rotate: 0, y: 0, backgroundColor: '#f5f0eb' }}
+              className="block h-[2px] w-8 origin-center transition-colors"
             />
             <motion.span
-              animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.2 }}
-              className="block h-[1.5px] w-6 bg-[#f5f0eb]"
+              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="block h-[2px] w-8 bg-[#f5f0eb]"
             />
             <motion.span
-              animate={
-                mobileOpen
-                  ? { rotate: -45, y: -8, backgroundColor: '#f5f0eb' }
-                  : { rotate: 0, y: 0, backgroundColor: '#f5f0eb' }
-              }
-              transition={{ duration: 0.3 }}
-              className="block h-[1.5px] w-6 origin-center"
+              animate={mobileOpen ? { rotate: -45, y: -9, backgroundColor: '#c9a96e' } : { rotate: 0, y: 0, backgroundColor: '#f5f0eb' }}
+              className="block h-[2px] w-8 origin-center transition-colors"
             />
           </button>
-        </nav>
+        </div>
       </motion.header>
 
-      {/* Mobile Full-Screen Overlay */}
+      {/* Pürüzsüz Mobil Menü Çekmecesi */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 flex items-center justify-center bg-[#0a0a0a]/95 backdrop-blur-2xl md:hidden"
+            initial={{ opacity: 0, y: '-100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '-100%' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as any }}
+            className="fixed inset-0 z-[40] flex flex-col items-center justify-center bg-[#0a0a0a] px-6"
           >
-            <nav className="flex flex-col items-center gap-8">
+            <div className="flex flex-col gap-8 text-center">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.1 + i * 0.08,
-                    ease: [0.22, 1, 0.36, 1] as any,
-                  }}
+                  transition={{ delay: 0.2 + i * 0.1, duration: 0.5, ease: 'easeOut' }}
                 >
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="group relative text-[#f5f0eb] text-3xl tracking-[0.2em] uppercase font-serif font-light transition-colors duration-300 hover:text-[#c9a96e]"
+                    onClick={() => setMobileOpen(false)}
+                    className="font-serif text-4xl sm:text-5xl tracking-widest text-[#f5f0eb] hover:text-[#c9a96e] transition-colors"
                   >
                     {link.label}
-                    <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-px w-0 bg-[#c9a96e] transition-all duration-500 ease-out group-hover:w-full" />
-                  </a>
+                  </Link>
                 </motion.div>
               ))}
-
-              {/* Optional gold divider */}
-              <motion.div
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                exit={{ opacity: 0, scaleX: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-4 h-px w-16 bg-[#c9a96e]/40"
-              />
-            </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,17 +1,17 @@
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import ServicesSection from "@/components/ServicesSection";
-import ContactSection from "@/components/ContactSection";
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Services from '@/components/Services';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-[#0a0a0a]">
-      <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <ContactSection />
+    <main className="min-h-screen bg-[#0a0a0a] font-sans selection:bg-[#c9a96e]/30 selection:text-[#f5f0eb]">
+      <Navbar />
+      <Hero />
+      <Services />
+      
+      {/* Placeholder for future sections */}
+      <div id="projeler" className="h-[50vh] bg-[#0a0a0a]" />
+      <div id="iletisim" className="h-[50vh] bg-[#141414]" />
     </main>
   );
 }

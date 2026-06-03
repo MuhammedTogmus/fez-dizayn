@@ -1,0 +1,80 @@
+'use client';
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const services = [
+  { id: '01', title: 'İç Mimari Tasarım', desc: 'Mekanlarınızı lüks detaylar ve kusursuz estetik felsefesiyle baştan aşağı yeniden kurguluyoruz.' },
+  { id: '02', title: '3D Modelleme & Render', desc: 'Projenizin bitmiş halini henüz başlamadan en gerçekçi ve çarpıcı kalitede deneyimleyin.' },
+  { id: '03', title: 'Özel Mobilya Üretimi', desc: 'Sadece sizin mekanınıza özel tasarlanmış, birinci sınıf materyallerle el işçiliği üretimi.' },
+  { id: '04', title: 'Proje Yönetimi', desc: 'Tasarım aşamasından anahtar teslimine kadar tüm süreci titizlikle yönetiyoruz.' },
+];
+
+export default function Services() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <section id="hizmetler" className="w-full bg-[#141414] py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
+        
+        {/* Sol Sütun: Başlık */}
+        <div className="lg:w-1/3">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f5f0eb] leading-tight sticky top-32"
+          >
+            Uzmanlık Alanlarımız
+          </motion.h2>
+        </div>
+
+        {/* Sağ Sütun: Kompakt Hizmet Akordeonu */}
+        <div className="lg:w-2/3 flex flex-col border-t border-white/10">
+          {services.map((service, index) => {
+            const isActive = activeIndex === index;
+
+            return (
+              <motion.div 
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onMouseEnter={() => setActiveIndex(index)}
+                className="group border-b border-white/10 py-8 cursor-pointer"
+              >
+                <div className="flex items-center gap-6 md:gap-10">
+                  <span className="text-[#c9a96e] font-serif text-xl transition-opacity">
+                    {service.id}
+                  </span>
+                  <h3 className={`font-serif text-2xl md:text-4xl transition-colors duration-500 ${isActive ? 'text-[#f5f0eb]' : 'text-[#f5f0eb]/40 group-hover:text-[#f5f0eb]/70'}`}>
+                    {service.title}
+                  </h3>
+                </div>
+
+                {/* Yumuşak Açılır/Kapanır İçerik */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pt-6 pl-[3.5rem] md:pl-[4.5rem] text-[#a39e99] max-w-xl text-sm md:text-base leading-relaxed">
+                        {service.desc}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
