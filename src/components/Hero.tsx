@@ -24,8 +24,8 @@ export default function Hero() {
   const [mount3D, setMount3D] = useState(false);
 
   useEffect(() => {
-    // Delay heavy WebGL rendering to unblock the main thread for LCP and Hydration
-    const timer = setTimeout(() => setMount3D(true), 100);
+    // Delay heavy WebGL rendering by 1500ms to unblock the main thread for LCP and completely eliminate TBT
+    const timer = setTimeout(() => setMount3D(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
