@@ -13,7 +13,7 @@ export default function ContactSection() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               viewport={{ once: true, margin: "-100px" }}
             >
               <h2 className="font-playfair text-5xl md:text-7xl font-light tracking-wide mb-8">
@@ -28,7 +28,7 @@ export default function ContactSection() {
               className="flex flex-col gap-8 font-inter font-light"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as any }}
               viewport={{ once: true, margin: "-100px" }}
             >
               <div>
@@ -59,7 +59,7 @@ export default function ContactSection() {
               className="flex flex-col gap-8"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
               viewport={{ once: true, margin: "-100px" }}
               onSubmit={(e) => e.preventDefault()}
             >

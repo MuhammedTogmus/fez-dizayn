@@ -35,7 +35,7 @@ export default function ServicesSection() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
           viewport={{ once: true, margin: "-100px" }}
           className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
@@ -90,7 +90,7 @@ export default function ServicesSection() {
                         height: isExpanded ? 'auto' : 0,
                         opacity: isExpanded ? 1 : 0,
                       }}
-                      transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                      transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] as any }}
                     >
                       <div className="pt-4 md:pt-0 pb-4 md:pb-0">
                         <p className="font-inter text-lg text-white/70 leading-relaxed font-light">
