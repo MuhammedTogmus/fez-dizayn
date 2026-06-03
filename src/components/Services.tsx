@@ -6,23 +6,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 const services = [
   {
     id: '01',
-    title: 'İç Mimari Tasarım',
-    desc: 'Mekanlarınızı lüks detaylar ve kusursuz estetik felsefesiyle baştan aşağı yeniden kurguluyoruz. Her köşe, her doku özenle seçilir.',
+    title: 'İç Mimarlık',
+    desc: 'Yaşam ve çalışma alanlarınızı fonksiyonellik ile estetiğin mükemmel dengesiyle yeniden tasarlıyoruz. Her mekan, sahibinin hikayesini anlatır.',
   },
   {
     id: '02',
-    title: '3D Modelleme & Render',
-    desc: 'Projenizin bitmiş halini henüz başlamadan fotorealistik kalitede deneyimleyin. Kararlarınızı görsellerle destekleyin.',
+    title: 'Wood Design',
+    desc: 'Doğal ahşabın sıcaklığını modern tasarım anlayışıyla birleştiriyoruz. Özel ölçü mobilya, duvar panelleri ve ahşap detay çözümleri üretiyoruz.',
   },
   {
     id: '03',
-    title: 'Özel Mobilya Üretimi',
-    desc: 'Sadece sizin mekanınıza özel tasarlanmış, birinci sınıf materyallerle üretilen el işçiliği mobilyalar.',
-  },
-  {
-    id: '04',
-    title: 'Proje Yönetimi',
-    desc: 'Tasarım aşamasından anahtar teslimine kadar tüm süreci titizlikle, zamanında ve bütçeye uygun şekilde yönetiyoruz.',
+    title: 'Dekorasyon',
+    desc: 'Mekanlarınıza karakter ve ruh kazandıran dekorasyon çözümleri sunuyoruz. Renk paletinden aksesuar seçimine kadar her detay titizlikle planlanır.',
   },
 ];
 

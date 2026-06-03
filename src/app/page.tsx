@@ -14,7 +14,8 @@ export default function Home() {
       <Contact />
       
       <footer className="w-full bg-[#141414] py-16 text-center border-t border-white/5">
-        <p className="text-[#a39e99] text-sm tracking-widest">&copy; {new Date().getFullYear()} Fez Dizayn. Tüm hakları saklıdır.</p>
+        <p className="text-[#a39e99] text-sm tracking-widest mb-3">&copy; {new Date().getFullYear()} Fez Dizayn. Tüm hakları saklıdır.</p>
+        <p className="text-[#6b6560] text-xs tracking-wider">Design by Uğur Ozman</p>
       </footer>
     </main>
   );

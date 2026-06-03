@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion';
 
 const contactInfo = [
-  { label: 'Adres', value: 'Halkalı, Küçükçekmece\nİstanbul, Türkiye' },
-  { label: 'Telefon', value: '+90 (212) 555 0 123' },
-  { label: 'E-posta', value: 'info@fezdizayn.com' },
+  { label: 'Adres', value: 'Halkalı, İstanbul', href: '' },
+  { label: 'Telefon', value: '+90 531 931 78 51', href: 'tel:+905319317851' },
+  { label: 'Instagram', value: '@fezdizayn', href: 'https://www.instagram.com/fezdizayn' },
 ];
 
 export default function Contact() {
@@ -63,9 +63,20 @@ export default function Contact() {
                 <p className="text-[#c9a96e] text-xs tracking-[0.2em] uppercase mb-2">
                   {item.label}
                 </p>
-                <p className="text-[#f5f0eb] text-lg md:text-xl whitespace-pre-line leading-relaxed">
-                  {item.value}
-                </p>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="text-[#f5f0eb] text-lg md:text-xl whitespace-pre-line leading-relaxed hover:text-[#c9a96e] transition-colors"
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className="text-[#f5f0eb] text-lg md:text-xl whitespace-pre-line leading-relaxed">
+                    {item.value}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
@@ -130,10 +141,9 @@ export default function Contact() {
               </label>
               <select className="bg-transparent border-b border-white/10 focus:border-[#c9a96e] text-[#f5f0eb] py-3 outline-none transition-colors appearance-none cursor-pointer">
                 <option value="" className="bg-[#141414]">Seçiniz</option>
-                <option value="ic-mimari" className="bg-[#141414]">İç Mimari Tasarım</option>
-                <option value="3d-render" className="bg-[#141414]">3D Modelleme & Render</option>
-                <option value="mobilya" className="bg-[#141414]">Özel Mobilya Üretimi</option>
-                <option value="proje-yonetimi" className="bg-[#141414]">Proje Yönetimi</option>
+                <option value="ic-mimarlik" className="bg-[#141414]">İç Mimarlık</option>
+                <option value="wood-design" className="bg-[#141414]">Wood Design</option>
+                <option value="dekorasyon" className="bg-[#141414]">Dekorasyon</option>
               </select>
             </div>
 

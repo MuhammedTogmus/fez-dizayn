@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const projects = [
-  { id: 1, title: 'Modern Villa, Beykoz', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000' },
-  { id: 2, title: 'Luxury Penthouse, Şişli', img: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000' },
-  { id: 3, title: 'Bohem Konsept, Kadıköy', img: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&q=80&w=1000' },
-  { id: 4, title: 'Minimalist Ofis, Levent', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000' },
+  { id: 1, title: 'Özel Ahşap Mutfak Tasarımı', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=1000' },
+  { id: 2, title: 'Modern İç Mimari Konsept', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1000' },
+  { id: 3, title: 'Ahşap Duvar Paneli & Dekorasyon', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1000' },
+  { id: 4, title: 'Lüks Salon Dekorasyonu', img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000' },
 ];
 
 export default function Projects() {
