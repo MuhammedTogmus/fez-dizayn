@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import CustomCursor from "@/components/CustomCursor";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -32,7 +31,6 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col font-sans bg-[#0a0a0a] text-[#f5f0eb]">
-        <CustomCursor />
         <Navbar />
         {children}
       </body>
