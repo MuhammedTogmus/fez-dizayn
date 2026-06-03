@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 
@@ -20,11 +21,19 @@ const SceneDynamic = dynamic(() => import('./Scene'), {
 });
 
 export default function Hero() {
+  const [mount3D, setMount3D] = useState(false);
+
+  useEffect(() => {
+    // Delay heavy WebGL rendering to unblock the main thread for LCP and Hydration
+    const timer = setTimeout(() => setMount3D(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#110e0a]">
       {/* BACKGROUND LAYER: strictly z-0 and pointer-events-none so it doesn't block clicks */}
       <div className="absolute inset-0 z-[0] pointer-events-none">
-        <SceneDynamic />
+        {mount3D && <SceneDynamic />}
       </div>
 
       {/* FOREGROUND LAYER: strictly z-10 and pointer-events-auto for clickability */}
