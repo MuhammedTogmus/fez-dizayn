@@ -1,6 +1,8 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
+import Services from '@/components/Services';
+import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
@@ -8,10 +10,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Projects />
+      <Services />
+      <Contact />
       
-      {/* Footer Placeholder */}
-      <footer className="w-full bg-[#141414] py-10 text-center text-[#a39e99] text-sm">
-        <p>&copy; {new Date().getFullYear()} Fez Dizayn. Tüm hakları saklıdır.</p>
+      <footer className="w-full bg-[#141414] py-16 text-center border-t border-white/5">
+        <p className="text-[#a39e99] text-sm tracking-widest">&copy; {new Date().getFullYear()} Fez Dizayn. Tüm hakları saklıdır.</p>
       </footer>
     </main>
   );

@@ -4,22 +4,49 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const services = [
-  { id: '01', title: 'İç Mimari Tasarım', desc: 'Mekanlarınızı lüks detaylar ve kusursuz estetik felsefesiyle baştan aşağı yeniden kurguluyoruz.' },
-  { id: '02', title: '3D Modelleme & Render', desc: 'Projenizin bitmiş halini henüz başlamadan en gerçekçi ve çarpıcı kalitede deneyimleyin.' },
-  { id: '03', title: 'Özel Mobilya Üretimi', desc: 'Sadece sizin mekanınıza özel tasarlanmış, birinci sınıf materyallerle el işçiliği üretimi.' },
-  { id: '04', title: 'Proje Yönetimi', desc: 'Tasarım aşamasından anahtar teslimine kadar tüm süreci titizlikle yönetiyoruz.' },
+  {
+    id: '01',
+    title: 'İç Mimari Tasarım',
+    desc: 'Mekanlarınızı lüks detaylar ve kusursuz estetik felsefesiyle baştan aşağı yeniden kurguluyoruz. Her köşe, her doku özenle seçilir.',
+  },
+  {
+    id: '02',
+    title: '3D Modelleme & Render',
+    desc: 'Projenizin bitmiş halini henüz başlamadan fotorealistik kalitede deneyimleyin. Kararlarınızı görsellerle destekleyin.',
+  },
+  {
+    id: '03',
+    title: 'Özel Mobilya Üretimi',
+    desc: 'Sadece sizin mekanınıza özel tasarlanmış, birinci sınıf materyallerle üretilen el işçiliği mobilyalar.',
+  },
+  {
+    id: '04',
+    title: 'Proje Yönetimi',
+    desc: 'Tasarım aşamasından anahtar teslimine kadar tüm süreci titizlikle, zamanında ve bütçeye uygun şekilde yönetiyoruz.',
+  },
 ];
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="hizmetler" className="w-full bg-[#141414] py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden">
+    <section
+      id="hizmetler"
+      className="w-full bg-[#141414] py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-        
         {/* Sol Sütun: Başlık */}
         <div className="lg:w-1/3">
-          <motion.h2 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-[#c9a96e] text-sm tracking-[0.3em] uppercase mb-4"
+          >
+            Hizmetlerimiz
+          </motion.p>
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -30,31 +57,49 @@ export default function Services() {
           </motion.h2>
         </div>
 
-        {/* Sağ Sütun: Kompakt Hizmet Akordeonu */}
+        {/* Sağ Sütun: Kompakt Akordeon */}
         <div className="lg:w-2/3 flex flex-col border-t border-white/10">
           {services.map((service, index) => {
             const isActive = activeIndex === index;
 
             return (
-              <motion.div 
+              <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onMouseEnter={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(index)}
                 className="group border-b border-white/10 py-8 cursor-pointer"
               >
-                <div className="flex items-center gap-6 md:gap-10">
-                  <span className="text-[#c9a96e] font-serif text-xl transition-opacity">
-                    {service.id}
-                  </span>
-                  <h3 className={`font-serif text-2xl md:text-4xl transition-colors duration-500 ${isActive ? 'text-[#f5f0eb]' : 'text-[#f5f0eb]/40 group-hover:text-[#f5f0eb]/70'}`}>
-                    {service.title}
-                  </h3>
+                <div className="flex items-center justify-between gap-6 md:gap-10">
+                  <div className="flex items-center gap-6 md:gap-10">
+                    <span className="text-[#c9a96e] font-serif text-xl transition-opacity">
+                      {service.id}
+                    </span>
+                    <h3
+                      className={`font-serif text-2xl md:text-3xl lg:text-4xl transition-colors duration-500 ${
+                        isActive
+                          ? 'text-[#f5f0eb]'
+                          : 'text-[#f5f0eb]/40 group-hover:text-[#f5f0eb]/70'
+                      }`}
+                    >
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  {/* Artı ikonu */}
+                  <div className="hidden md:flex relative w-5 h-5 items-center justify-center shrink-0">
+                    <div className="absolute w-full h-[1px] bg-[#c9a96e]" />
+                    <div
+                      className={`absolute w-full h-[1px] bg-[#c9a96e] transition-transform duration-300 ${
+                        isActive ? 'rotate-0' : 'rotate-90'
+                      }`}
+                    />
+                  </div>
                 </div>
 
-                {/* Yumuşak Açılır/Kapanır İçerik */}
                 <AnimatePresence>
                   {isActive && (
                     <motion.div
