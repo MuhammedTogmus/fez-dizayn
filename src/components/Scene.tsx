@@ -2,10 +2,9 @@
 
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial } from '@react-three/drei';
+import { Float, MeshDistortMaterial, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Bağımsız hareket eden lüks altın küre bileşeni
 function AbstractShape() {
   const meshRef = useRef<THREE.Mesh>(null!);
 
@@ -35,14 +34,14 @@ function AbstractShape() {
   );
 }
 
-// Dışa aktarılan ana Canvas (Arkaplan)
 export default function Scene() {
   return (
     <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]}>
+      {/* NO PointerLockControls! Standard OrbitControls strictly restricted. */}
+      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1.5} color="#ffffff" />
       <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#c9a96e" />
-      
       <AbstractShape />
     </Canvas>
   );

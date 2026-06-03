@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 
-// Performans İyileştirmesi: 3D Sahneyi Sunucu Tarafı Renderdan Çıkartır ve Lazy Load yapar.
+// Dynamic import with SSR false guarantees the server won't crash trying to render WebGL
 const SceneDynamic = dynamic(() => import('./Scene'), { 
   ssr: false, 
   loading: () => (
@@ -22,14 +22,13 @@ const SceneDynamic = dynamic(() => import('./Scene'), {
 export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]">
-      {/* 3D Arkaplan Katmanı: z-0 ve pointer-events-none ile etkileşimi tamamen kapatır */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      {/* BACKGROUND LAYER: strictly z-0 and pointer-events-none so it doesn't block clicks */}
+      <div className="absolute inset-0 z-[0] pointer-events-none">
         <SceneDynamic />
       </div>
 
-      {/* Ana UI Katmanı: z-10 ile öne çıkar, pointer-events-auto ile butonlar çalışır */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 text-center pointer-events-auto">
-        
+      {/* FOREGROUND LAYER: strictly z-10 and pointer-events-auto for clickability */}
+      <div className="relative z-[10] h-full flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 text-center pointer-events-auto">
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,19 +52,17 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <motion.a
+          {/* Using a standard Next.js-compatible anchor with pointer events enabled */}
+          <a
             href="#projeler"
-            whileHover={{ scale: 1.05, backgroundColor: '#c9a96e', color: '#0a0a0a' }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block border border-[#c9a96e] text-[#f5f0eb] px-10 py-4 uppercase tracking-[0.2em] text-sm transition-colors duration-300 cursor-pointer"
+            className="inline-block border border-[#c9a96e] hover:bg-[#c9a96e] hover:text-[#0a0a0a] text-[#f5f0eb] px-10 py-4 uppercase tracking-[0.2em] text-sm transition-colors duration-300 cursor-pointer pointer-events-auto"
           >
             Projeleri Keşfet
-          </motion.a>
+          </a>
         </motion.div>
       </div>
       
-      {/* Pürüzsüz geçiş için gradient */}
-      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent z-[5] pointer-events-none" />
     </section>
   );
 }

@@ -15,7 +15,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Kaydırma (scroll) efekti ve mobil menüde arka planın kilitlenmesi
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -32,18 +31,19 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-[50] transition-all duration-500 pointer-events-auto ${
           scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12 lg:px-16">
+          
+          {/* Logo routes to home via next/link */}
           <Link href="/" className="relative z-[60]" onClick={() => setMobileOpen(false)}>
             <span className="font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold text-[#f5f0eb] uppercase">
               Fez Dizayn
             </span>
           </Link>
 
-          {/* Masaüstü Navigasyon */}
           <nav className="hidden md:flex gap-10">
             {navLinks.map((link) => (
               <Link
@@ -57,9 +57,8 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Hamburger Menü İkonu */}
           <button
-            className="relative z-[60] flex md:hidden flex-col items-center justify-center w-10 h-10 gap-2"
+            className="relative z-[60] flex md:hidden flex-col items-center justify-center w-10 h-10 gap-2 cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Menüyü Aç/Kapat"
           >
@@ -79,7 +78,6 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Pürüzsüz Mobil Menü Çekmecesi */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -87,7 +85,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as any }}
-            className="fixed inset-0 z-[40] flex flex-col items-center justify-center bg-[#0a0a0a] px-6"
+            className="fixed inset-0 z-[40] flex flex-col items-center justify-center bg-[#0a0a0a] px-6 pointer-events-auto"
           >
             <div className="flex flex-col gap-8 text-center">
               {navLinks.map((link, i) => (

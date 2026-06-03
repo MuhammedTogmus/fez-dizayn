@@ -39,15 +39,7 @@
    BASE STYLES
    ============================================ */
 
-* {
-  cursor: none;
-}
-
-@media (max-width: 768px) {
-  * {
-    cursor: auto;
-  }
-}
+/* Cursor settings removed for normal interaction */
 
 html {
   scroll-behavior: smooth;

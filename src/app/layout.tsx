@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -16,22 +15,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Fez Dizayn | Lüks İç Mimarlık & Tasarım",
+  title: "Fez Dizayn | Lüks İç Mimarlık",
   description: "Lüks iç mekan tasarımında 15 yıllık deneyim. Hayal ettiğiniz mekanları, olağanüstü detaylarla hayata geçiriyoruz.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="tr"
       className={`${playfair.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
+      {/* We removed all custom cursors, ensuring the default system cursor always works */}
       <body className="min-h-full flex flex-col font-sans bg-[#0a0a0a] text-[#f5f0eb]">
-        <Navbar />
         {children}
       </body>
     </html>
