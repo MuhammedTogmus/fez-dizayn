@@ -9,10 +9,10 @@ const portfolioItems = [
   { id: 2, title: 'Doğal Taş & Modern Lavabo', src: '/images/proje%20(2).jpg', type: 'image' },
   { id: 3, title: 'Lüks Banyo Mobilyası', src: '/images/proje%20(3).jpg', type: 'image' },
   { id: 4, title: 'Akıllı Mutfak Sistemleri', src: '/images/proje%20(4).jpg', type: 'image' },
-  { id: 5, title: 'Ahşap Duvar Paneli & TV Ünitesi', src: '/images/proje%20(5).jpg', type: 'image' },
+  { id: 5, title: 'Özel Tasarım Mutfak Çözümleri', src: '/images/proje%20(5).jpg', type: 'image' },
   { id: 6, title: 'Özel Üretim Ahşap Dolap', src: '/images/proje%20(6).jpg', type: 'image' },
-  { id: 7, title: 'Atölye Üretim Süreci', src: '/videos/video.mp4.mp4', type: 'video' },
-  { id: 8, title: 'Tasarım Kütüphane', src: '/images/proje%20(7).jpg', type: 'image' },
+  { id: 7, title: 'Doğal Taş Lavabo Uygulaması', src: '/videos/video.mp4.mp4', type: 'video' },
+  { id: 8, title: 'Yatak Odası Ahşap Duvar Paneli', src: '/images/proje%20(7).jpg', type: 'image' },
 ];
 
 export default function PortfolioPage() {

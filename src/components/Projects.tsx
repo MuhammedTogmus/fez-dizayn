@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const featuredProjects = [
-  { id: 1, title: 'Özel Ceviz Kitaplık Tasarımı', src: '/images/proje1.jpg', type: 'image' },
-  { id: 2, title: 'Modern Ahşap İşçiliği (Video)', src: '/videos/proje-video.mp4', type: 'video' },
+  { id: 1, title: 'Özel Tasarım Mutfak Çözümleri', src: '/images/proje1.jpg', type: 'image' },
+  { id: 2, title: 'Yatak Odası Ahşap Duvar Paneli', src: '/images/proje2.jpg', type: 'image' },
+  { id: 3, title: 'Doğal Taş Lavabo Uygulaması', src: '/videos/proje-video.mp4', type: 'video' },
 ];
 
 export default function Projects() {

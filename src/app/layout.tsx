@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
       {/* We removed all custom cursors, ensuring the default system cursor always works */}
       <body className="min-h-full flex flex-col font-sans bg-[#110e0a] text-[#f2ebe3]">
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

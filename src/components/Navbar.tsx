@@ -3,12 +3,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navLinks = [
   { label: 'Anasayfa', href: '/' },
   { label: 'Hizmetlerimiz', href: '/#hizmetler' },
   { label: 'Projeler', href: '/projeler' },
-  { label: 'İletişim / Hızlı Fiyat Al', href: 'https://wa.me/905319317851', external: true },
+  { label: 'İletişim', href: 'https://wa.me/905319317851', external: true },
 ];
 
 export default function Navbar() {
@@ -38,7 +39,7 @@ export default function Navbar() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-12 lg:px-16">
           
           <Link href="/" className="relative z-[60]" onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}>
-            <span className={`font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold uppercase transition-colors duration-300 ${mobileOpen ? 'text-[#2C2420]' : 'text-[#f2ebe3]'}`}>
+            <span className={`font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold uppercase transition-colors duration-300 ${mobileOpen ? 'text-[#E8DCC4]' : 'text-[#f2ebe3]'}`}>
               Fez Dizayn
             </span>
           </Link>
@@ -68,15 +69,15 @@ export default function Navbar() {
           >
             <motion.span
               animate={mobileOpen ? { rotate: 45, y: 10 } : { rotate: 0, y: 0 }}
-              className={`block h-[2px] w-8 origin-center transition-all duration-300 ${mobileOpen ? 'bg-[#2C2420]' : 'bg-[#f2ebe3]'}`}
+              className={`block h-[2px] w-8 origin-center transition-all duration-300 ${mobileOpen ? 'bg-[#E8DCC4]' : 'bg-[#f2ebe3]'}`}
             />
             <motion.span
               animate={mobileOpen ? { opacity: 0, width: 0 } : { opacity: 1, width: '24px' }}
-              className={`block h-[2px] transition-all duration-300 ${mobileOpen ? 'bg-[#2C2420]' : 'bg-[#f2ebe3]'}`}
+              className={`block h-[2px] transition-all duration-300 ${mobileOpen ? 'bg-[#E8DCC4]' : 'bg-[#f2ebe3]'}`}
             />
             <motion.span
               animate={mobileOpen ? { rotate: -45, y: -10, width: '32px' } : { rotate: 0, y: 0, width: '16px' }}
-              className={`block h-[2px] origin-center transition-all duration-300 ${mobileOpen ? 'bg-[#2C2420]' : 'bg-[#f2ebe3]'}`}
+              className={`block h-[2px] origin-center transition-all duration-300 ${mobileOpen ? 'bg-[#E8DCC4]' : 'bg-[#f2ebe3]'}`}
             />
           </button>
         </div>
@@ -89,8 +90,20 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20, transition: { delay: 0.3, duration: 0.5, ease: [0.76, 0, 0.24, 1] } }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] as any }}
-            className="fixed inset-0 z-[40] flex flex-col justify-center bg-[#EAE6DF] px-8 sm:px-16 pointer-events-auto"
+            className="fixed inset-0 z-[40] flex flex-col justify-center px-8 sm:px-16 pointer-events-auto overflow-hidden"
           >
+            <div className="absolute inset-0 z-[-1]">
+              <Image 
+                src="/images/menu-bg.jpg" 
+                alt="Menu Background" 
+                fill 
+                className="object-cover object-center"
+                quality={75}
+                priority 
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-[#110e0a]/70 backdrop-blur-sm" />
+            </div>
             <motion.div 
               variants={{
                 hidden: { opacity: 0 },
@@ -116,12 +129,12 @@ export default function Navbar() {
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     onClick={() => setMobileOpen(false)}
-                    className="group flex items-center justify-start space-x-6 transition-colors text-[#2C2420] hover:text-[#c9a96e] w-[280px] sm:w-[320px] md:w-[400px]"
+                    className="group flex flex-col items-center justify-center transition-colors text-[#E8DCC4] hover:text-[#c9a96e] text-center"
                   >
-                    <span className="w-8 text-right text-sm md:text-base text-stone-400 font-sans tracking-widest group-hover:text-[#c9a96e] transition-colors mt-1">
+                    <span className="block text-sm text-[#E8DCC4]/50 mb-1 font-sans tracking-widest group-hover:text-[#c9a96e]/70 transition-colors">
                       0{i + 1}
                     </span>
-                    <span className={`font-serif text-left tracking-widest flex-1 ${link.label.length > 15 ? 'text-2xl sm:text-3xl md:text-4xl leading-tight' : 'text-3xl sm:text-4xl md:text-5xl'}`}>
+                    <span className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-wide">
                       {link.label}
                     </span>
                   </Link>
