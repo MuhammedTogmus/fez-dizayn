@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative w-full h-screen overflow-hidden bg-[#0a0604]">
       {/* LAYER 1: Full-screen background photograph — lowest z-index */}
       <Image
-        src="/images/hero-bg.jpg"
+        src="/images/hero-bg.webp"
         alt="Fez Dizayn - Lüks İç Mimarlık"
         fill
         priority
