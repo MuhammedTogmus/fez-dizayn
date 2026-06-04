@@ -8,7 +8,6 @@ import Image from 'next/image';
 const heroImages = [
   '/images/hero-bg-1.webp',
   '/images/hero-bg-2.jpg',
-  '/images/hero-bg-3.webp',
   '/images/hero-bg-4.jpg',
   '/images/hero-bg-5.png',
   '/images/hero-bg-6.webp',
