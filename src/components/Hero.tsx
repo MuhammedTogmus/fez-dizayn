@@ -9,6 +9,9 @@ const heroImages = [
   '/images/hero-bg-1.webp',
   '/images/hero-bg-2.jpg',
   '/images/hero-bg-3.webp',
+  '/images/hero-bg-4.jpg',
+  '/images/hero-bg-5.png',
+  '/images/hero-bg-6.webp',
 ];
 
 export default function Hero() {
@@ -19,10 +22,26 @@ export default function Hero() {
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentIndex]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+  };
 
   return (
     <section className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col justify-center">
+      
+      {/* PRELOADER: Force browser to download all slider images immediately in the background */}
+      <div className="opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+        {heroImages.map((src) => (
+          <Image key={src} src={src} alt="preload" width={10} height={10} quality={75} priority />
+        ))}
+      </div>
+
       {/* LAYER 1: Crossfading images at z-[0] — absolutely positioned, fill parent */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -91,13 +110,36 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* Slider Controls (Prev/Next) */}
+      <button 
+        onClick={handlePrev}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-[20] w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#110e0a]/40 hover:bg-[#c9a96e]/20 border border-white/10 hover:border-[#c9a96e]/50 text-white hover:text-[#c9a96e] backdrop-blur-sm transition-all duration-300 pointer-events-auto group"
+        aria-label="Önceki Görsel"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform duration-300">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+
+      <button 
+        onClick={handleNext}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-[20] w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#110e0a]/40 hover:bg-[#c9a96e]/20 border border-white/10 hover:border-[#c9a96e]/50 text-white hover:text-[#c9a96e] backdrop-blur-sm transition-all duration-300 pointer-events-auto group"
+        aria-label="Sonraki Görsel"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform duration-300">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+
       {/* Carousel indicator dots */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-[10] flex gap-3 pointer-events-none">
         {heroImages.map((_, i) => (
-          <div
+          <button
             key={i}
-            className={`h-[2px] rounded-full transition-all duration-700 ${
-              i === currentIndex ? 'w-8 bg-[#c9a96e]' : 'w-4 bg-white/30'
+            onClick={() => setCurrentIndex(i)}
+            aria-label={`Görsel ${i + 1}`}
+            className={`h-[2px] rounded-full transition-all duration-700 pointer-events-auto cursor-pointer ${
+              i === currentIndex ? 'w-8 bg-[#c9a96e]' : 'w-4 bg-white/30 hover:bg-white/60'
             }`}
           />
         ))}
