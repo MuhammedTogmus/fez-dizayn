@@ -4,6 +4,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import dynamic from 'next/dynamic';
 
 const Process = dynamic(() => import('@/components/Process'));
+const About = dynamic(() => import('@/components/About'));
 const Contact = dynamic(() => import('@/components/Contact'));
 const Services = dynamic(() => import('@/components/Services'));
 
@@ -13,6 +14,7 @@ export default function Home() {
       <ScrollToTop />
       <Navbar />
       <Hero />
+      <About />
       <Process />
       <Contact />
       <Services />
