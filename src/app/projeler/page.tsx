@@ -5,11 +5,14 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const portfolioItems = [
-  { id: 1, title: 'Özel Ceviz Kitaplık Tasarımı', src: '/images/proje1.jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-2' },
-  { id: 2, title: 'Modern Ahşap İşçiliği', src: '/videos/proje-video.mp4', type: 'video', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
-  { id: 3, title: 'Ahşap Duvar Paneli & Dekorasyon', src: '/images/proje2.jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
-  { id: 4, title: 'Lüks Ahşap Mutfak Konsepti', src: '/images/proje3.jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2' },
-  { id: 5, title: 'Minimalist Ofis Mobilyaları', src: '/images/proje4.jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1' },
+  { id: 1, title: 'Özel Ceviz Kitaplık Tasarımı', src: '/images/proje%20(1).jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-2' },
+  { id: 2, title: 'Modern Ahşap İşçiliği', src: '/videos/video.mp4.mp4', type: 'video', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 3, title: 'Ahşap Duvar Paneli & Dekorasyon', src: '/images/proje%20(2).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 4, title: 'Lüks Ahşap Mutfak Konsepti', src: '/images/proje%20(3).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2' },
+  { id: 5, title: 'Minimalist Ofis Mobilyaları', src: '/images/proje%20(4).jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1' },
+  { id: 6, title: 'Özel Marangozluk İşleri', src: '/images/proje%20(5).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 7, title: 'Lüks Zemin ve Ahşap Detaylar', src: '/images/proje%20(6).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 8, title: 'Tasarım Kütüphane', src: '/images/proje%20(7).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
 ];
 
 export default function PortfolioPage() {
