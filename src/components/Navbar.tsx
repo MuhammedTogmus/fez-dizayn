@@ -36,6 +36,18 @@ export default function Navbar() {
           scrolled ? 'bg-[#110e0a]/90 backdrop-blur-xl border-b border-[#2e2720]/50 py-4' : 'bg-transparent py-6'
         }`}
       >
+        {/* Preload the heavy background image so there's no delay on first open */}
+        <div className="opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+          <Image 
+            src="/images/menu-bg.jpg" 
+            alt="Preload" 
+            width={1}
+            height={1}
+            quality={75}
+            priority 
+          />
+        </div>
+
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-12 lg:px-16">
           
           <Link href="/" className="relative z-[60]" onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}>
