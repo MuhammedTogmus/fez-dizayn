@@ -1,51 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-// Dynamic import with SSR false guarantees the server won't crash trying to render WebGL
-const SceneDynamic = dynamic(() => import('./Scene'), { 
-  ssr: false, 
-  loading: () => (
-    <div className="absolute inset-0 flex items-center justify-center bg-[#110e0a]">
-      <motion.div 
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="font-serif text-[#c9a96e] tracking-[0.2em] uppercase text-sm"
-      >
-        Yükleniyor...
-      </motion.div>
-    </div>
-  )
-});
-
 export default function Hero() {
-  const [mount3D, setMount3D] = useState(false);
-
-  useEffect(() => {
-    // Delay heavy WebGL rendering by 1500ms to unblock the main thread for LCP and completely eliminate TBT
-    const timer = setTimeout(() => setMount3D(true), 1500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/20 via-[#110e0a] to-[#0a0806]">
+    <section className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-[#3b2313] via-[#1a0f08] to-[#0a0604]">
       {/* BACKGROUND LAYER: strictly z-0 and pointer-events-none */}
       <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
-        {/* CSS Grid Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#2e2720_1px,transparent_1px),linear-gradient(to_bottom,#2e2720_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] opacity-20" />
+        {/* CSS Noise Overlay for realistic wood grain tactile feel */}
+        <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
         
         {/* Typographic Watermark */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none mix-blend-overlay">
-          <h1 className="font-serif text-[25vw] font-bold text-[#f2ebe3] opacity-[0.03] tracking-tighter whitespace-nowrap">
+          <h1 className="font-serif text-[25vw] font-bold text-[#f2ebe3] opacity-[0.02] tracking-tighter whitespace-nowrap">
             FEZ
           </h1>
         </div>
-
-        {/* 3D WebGL Scene */}
-        {mount3D && <SceneDynamic />}
       </div>
 
       {/* FOREGROUND LAYER: strictly z-10 and pointer-events-auto for clickability */}

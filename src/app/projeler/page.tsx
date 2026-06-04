@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const portfolioItems = [
-  { id: 1, title: 'Özel Üretim Ahşap Konsol', desc: 'Doğal ahşap dokusuyla yaşam alanlarınıza sıcaklık katan özel tasarım konsol.', src: '/images/proje%20(1).jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-2' },
-  { id: 2, title: 'Doğal Taş & Modern İşçilik', desc: 'Siyah batarya ve doğal taş lavabonun kusursuz lüks uyumu.', src: '/videos/video.mp4.mp4', type: 'video', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
-  { id: 3, title: 'Modern Banyo Mobilyası', desc: 'Özel aydınlatmalı ayna ve antrasit panellerle tasarlanmış şık banyo dolabı.', src: '/images/proje%20(2).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
-  { id: 4, title: 'Lüks Ahşap Mutfak Konsepti', desc: 'Minimalist hatlara sahip premium mutfak.', src: '/images/proje%20(3).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2' },
-  { id: 5, title: 'Minimalist Ofis Mobilyaları', desc: 'Sade ve lüks çalışma alanı.', src: '/images/proje%20(4).jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1' },
-  { id: 6, title: 'Özel Marangozluk İşleri', desc: 'El işçiliği ahşap merdiven detayları.', src: '/images/proje%20(5).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
-  { id: 7, title: 'Lüks Zemin ve Ahşap Detaylar', desc: 'Otantik meşe parke ve duvar kaplaması.', src: '/images/proje%20(6).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
-  { id: 8, title: 'Tasarım Kütüphane', desc: 'Geniş hacimli ve şık ceviz kütüphane.', src: '/images/proje%20(7).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 1, title: 'Özel Üretim Ahşap Konsol', src: '/images/proje%20(1).jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-2' },
+  { id: 2, title: 'Doğal Taş & Modern Lavabo', src: '/videos/video.mp4.mp4', type: 'video', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 3, title: 'Özel Tasarım Mutfak & Yaşam Alanı', src: '/images/proje%20(2).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 4, title: 'Modern Banyo Mobilyası', src: '/images/proje%20(3).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2' },
+  { id: 5, title: 'Minimalist Ofis Mobilyaları', src: '/images/proje%20(4).jpg', type: 'image', colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1' },
+  { id: 6, title: 'Özel Marangozluk İşleri', src: '/images/proje%20(5).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 7, title: 'Lüks Zemin ve Ahşap Detaylar', src: '/images/proje%20(6).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
+  { id: 8, title: 'Tasarım Kütüphane', src: '/images/proje%20(7).jpg', type: 'image', colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1' },
 ];
 
 export default function PortfolioPage() {
@@ -84,11 +84,6 @@ export default function PortfolioPage() {
                   <h3 className="font-serif text-2xl md:text-3xl text-[#f2ebe3] translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     {item.title}
                   </h3>
-                  {item.desc && (
-                    <p className="text-[#b5a898] text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                      {item.desc}
-                    </p>
-                  )}
                   <div className="w-12 h-[1px] bg-[#c9a96e] mt-4 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 delay-200" />
                 </div>
               </motion.div>

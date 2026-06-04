@@ -2,10 +2,12 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Contact from '@/components/Contact';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#110e0a] font-sans selection:bg-[#c9a96e]/30 selection:text-[#f2ebe3]">
+      <ScrollToTop />
       <Navbar />
       <Hero />
       <Contact />
