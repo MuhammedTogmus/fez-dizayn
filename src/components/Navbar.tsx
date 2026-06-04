@@ -102,7 +102,7 @@ export default function Navbar() {
                 priority 
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-[#110e0a]/70 backdrop-blur-sm" />
+              <div className="absolute inset-0 bg-[#110e0a]/50" />
             </div>
             <motion.div 
               variants={{
