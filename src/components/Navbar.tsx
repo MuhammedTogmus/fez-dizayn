@@ -38,7 +38,7 @@ export default function Navbar() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-12 lg:px-16">
           
           <Link href="/" className="relative z-[60]" onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}>
-            <span className="font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold text-[#f2ebe3] uppercase">
+            <span className={`font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold uppercase transition-colors duration-300 ${mobileOpen ? 'text-[#2C2420]' : 'text-[#f2ebe3]'}`}>
               Fez Dizayn
             </span>
           </Link>
@@ -67,16 +67,16 @@ export default function Navbar() {
             aria-label="Menüyü Aç/Kapat"
           >
             <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 10, backgroundColor: '#2C2420' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3' }}
-              className="block h-[2px] w-8 origin-center transition-colors"
+              animate={mobileOpen ? { rotate: 45, y: 10 } : { rotate: 0, y: 0 }}
+              className={`block h-[2px] w-8 origin-center transition-all duration-300 ${mobileOpen ? 'bg-[#2C2420]' : 'bg-[#f2ebe3]'}`}
             />
             <motion.span
               animate={mobileOpen ? { opacity: 0, width: 0 } : { opacity: 1, width: '24px' }}
-              className="block h-[2px] bg-[#f2ebe3] transition-all"
+              className={`block h-[2px] transition-all duration-300 ${mobileOpen ? 'bg-[#2C2420]' : 'bg-[#f2ebe3]'}`}
             />
             <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -10, backgroundColor: '#2C2420', width: '32px' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3', width: '16px' }}
-              className="block h-[2px] origin-center transition-all"
+              animate={mobileOpen ? { rotate: -45, y: -10, width: '32px' } : { rotate: 0, y: 0, width: '16px' }}
+              className={`block h-[2px] origin-center transition-all duration-300 ${mobileOpen ? 'bg-[#2C2420]' : 'bg-[#f2ebe3]'}`}
             />
           </button>
         </div>
@@ -116,10 +116,14 @@ export default function Navbar() {
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     onClick={() => setMobileOpen(false)}
-                    className="group flex items-center justify-center font-serif text-3xl sm:text-4xl md:text-5xl tracking-widest transition-colors text-[#2C2420] hover:text-[#c9a96e]"
+                    className="group flex items-center justify-start space-x-6 transition-colors text-[#2C2420] hover:text-[#c9a96e] w-[280px] sm:w-[320px] md:w-[400px]"
                   >
-                    <span className="text-sm md:text-base text-stone-400 mr-6 md:mr-8 font-sans tracking-normal group-hover:text-[#c9a96e] transition-colors">0{i + 1}</span>
-                    {link.label}
+                    <span className="w-8 text-right text-sm md:text-base text-stone-400 font-sans tracking-widest group-hover:text-[#c9a96e] transition-colors mt-1">
+                      0{i + 1}
+                    </span>
+                    <span className={`font-serif text-left tracking-widest flex-1 ${link.label.length > 15 ? 'text-2xl sm:text-3xl md:text-4xl leading-tight' : 'text-3xl sm:text-4xl md:text-5xl'}`}>
+                      {link.label}
+                    </span>
                   </Link>
                 </motion.div>
               ))}
