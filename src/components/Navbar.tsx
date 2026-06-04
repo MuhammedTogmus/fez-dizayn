@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const navLinks = [
   { label: 'Anasayfa', href: '/' },
-  { label: 'Hizmetlerimiz', href: '#hizmetler' },
+  { label: 'Hizmetlerimiz', href: '/#hizmetler' },
   { label: 'Projeler', href: '/projeler' },
   { label: 'İletişim / Hızlı Fiyat Al', href: 'https://wa.me/905319317851', external: true },
 ];

@@ -1,37 +1,49 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const services = [
   {
     id: '01',
-    title: 'İç Mimarlık',
-    desc: 'Yaşam ve çalışma alanlarınızı fonksiyonellik ile estetiğin mükemmel dengesiyle yeniden tasarlıyoruz. Her mekan, sahibinin hikayesini anlatır.',
+    title: 'İç Mimari & Konsept Tasarım',
+    desc: 'Mekanların ruhunu yansıtan, estetik ve fonksiyonel yaşam alanları kurguluyoruz.',
   },
   {
     id: '02',
-    title: 'Wood Design',
-    desc: 'Doğal ahşabın sıcaklığını modern tasarım anlayışıyla birleştiriyoruz. Özel ölçü mobilya, duvar panelleri ve ahşap detay çözümleri üretiyoruz.',
+    title: 'Anahtar Teslim Uygulama',
+    desc: 'Tasarım aşamasından son dokunuşa kadar tüm süreci kusursuzca yönetiyoruz.',
   },
   {
     id: '03',
-    title: 'Dekorasyon',
-    desc: 'Mekanlarınıza karakter ve ruh kazandıran dekorasyon çözümleri sunuyoruz. Renk paletinden aksesuar seçimine kadar her detay titizlikle planlanır.',
+    title: 'Özel Ahşap (Wood Design) Üretimi',
+    desc: 'Kendi atölyemizde, mekana ve size özel yüksek kalite ahşap mobilyalar üretiyoruz.',
+  },
+  {
+    id: '04',
+    title: '3D Modelleme & Görselleştirme',
+    desc: 'Projelerinizi hayata geçmeden önce ultra gerçekçi renderlar ile deneyimlemenizi sağlıyoruz.',
+  },
+  {
+    id: '05',
+    title: 'Ticari Mekan & Ofis Tasarımı',
+    desc: 'Marka kimliğinizi yansıtan, prestijli ve verimli çalışma alanları tasarlıyoruz.',
+  },
+  {
+    id: '06',
+    title: 'Akıllı Alan Çözümleri',
+    desc: 'Dar veya zorlu mekanlar için estetiği bozmayan, maksimum verim sağlayan fonksiyonel tasarımlar geliştiriyoruz.',
   },
 ];
 
 export default function Services() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <section
       id="hizmetler"
-      className="w-full bg-[#1a1510] py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
+      className="w-full bg-[#1a1715] py-24 md:py-32 px-6 md:px-12 lg:px-16"
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-        {/* Sol Sütun: Başlık */}
-        <div className="lg:w-1/3">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16 md:mb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -46,73 +58,42 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f2ebe3] leading-tight sticky top-32"
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f2ebe3] leading-tight"
           >
             Uzmanlık Alanlarımız
           </motion.h2>
         </div>
 
-        {/* Sağ Sütun: Kompakt Akordeon */}
-        <div className="lg:w-2/3 flex flex-col border-t border-white/10">
-          {services.map((service, index) => {
-            const isActive = activeIndex === index;
+        {/* Services Grid 2x3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative bg-[#110e0a] border border-[#2e2720]/50 p-8 md:p-10 lg:p-12 hover:border-[#c9a96e]/30 transition-colors duration-500 overflow-hidden rounded-sm"
+            >
+              {/* Subtle hover gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#c9a96e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            return (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                onMouseEnter={() => setActiveIndex(index)}
-                onClick={() => setActiveIndex(index)}
-                className="group border-b border-white/10 py-8 cursor-pointer"
-              >
-                <div className="flex items-center justify-between gap-6 md:gap-10">
-                  <div className="flex items-center gap-6 md:gap-10">
-                    <span className="text-[#c9a96e] font-serif text-xl transition-opacity">
-                      {service.id}
-                    </span>
-                    <h3
-                      className={`font-serif text-2xl md:text-3xl lg:text-4xl transition-colors duration-500 ${
-                        isActive
-                          ? 'text-[#f2ebe3]'
-                          : 'text-[#f2ebe3]/40 group-hover:text-[#f2ebe3]/70'
-                      }`}
-                    >
-                      {service.title}
-                    </h3>
-                  </div>
+              <span className="block font-serif text-4xl text-[#c9a96e]/20 group-hover:text-[#c9a96e]/50 transition-colors duration-500 mb-6">
+                {service.id}
+              </span>
 
-                  {/* Artı ikonu */}
-                  <div className="hidden md:flex relative w-5 h-5 items-center justify-center shrink-0">
-                    <div className="absolute w-full h-[1px] bg-[#c9a96e]" />
-                    <div
-                      className={`absolute w-full h-[1px] bg-[#c9a96e] transition-transform duration-300 ${
-                        isActive ? 'rotate-0' : 'rotate-90'
-                      }`}
-                    />
-                  </div>
-                </div>
+              <h3 className="font-serif text-2xl text-[#f2ebe3] mb-4 group-hover:text-[#c9a96e] transition-colors duration-300">
+                {service.title}
+              </h3>
 
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pt-6 pl-[3.5rem] md:pl-[4.5rem] text-[#b5a898] max-w-xl text-sm md:text-base leading-relaxed">
-                        {service.desc}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+              <p className="text-[#b5a898] text-sm md:text-base leading-relaxed relative z-10">
+                {service.desc}
+              </p>
+
+              {/* Decorative line on hover */}
+              <div className="absolute bottom-0 left-0 h-[2px] bg-[#c9a96e] w-0 group-hover:w-full transition-all duration-700 ease-out" />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
