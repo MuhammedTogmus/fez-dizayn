@@ -93,7 +93,7 @@ export default function Contact() {
           <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
 
           <h3 className="relative z-10 font-serif text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-[#f2ebe3] mb-4 md:mb-6">
-            Projeleriniz İçin Bize Ulaşın
+            Siparişleriniz İçin Bize Ulaşın
           </h3>
           <p className="relative z-10 text-[#b5a898] text-sm sm:text-base md:text-xl max-w-2xl mb-8 md:mb-12 leading-relaxed">
             Mekanınıza özel ahşap tasarım ve dekorasyon çözümleri için WhatsApp üzerinden hızlıca iletişime geçin. Tasarım danışmanlığı tamamen ücretsizdir.

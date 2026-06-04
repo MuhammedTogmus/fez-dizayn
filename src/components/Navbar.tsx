@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 const navLinks = [
   { label: 'Anasayfa', href: '/' },
+  { label: 'Hakkımızda', href: '/#hakkimizda' },
   { label: 'Hizmetlerimiz', href: '/#hizmetler' },
   { label: 'Projeler', href: '/projeler' },
   { label: 'İletişim', href: 'https://wa.me/905319317851', external: true },

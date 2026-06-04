@@ -17,7 +17,7 @@ export default function About() {
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[1px] bg-[#c9a96e]" />
-            <p className="text-[#c9a96e] text-xs tracking-[0.3em] uppercase font-semibold">Kurumsal</p>
+            <p className="text-[#c9a96e] text-xs tracking-[0.3em] uppercase font-semibold">Hakkımızda</p>
           </div>
           
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f2ebe3] leading-tight mb-8">
