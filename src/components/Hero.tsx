@@ -2,59 +2,73 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-[#3b2313] via-[#1a0f08] to-[#0a0604]">
-      {/* BACKGROUND LAYER: strictly z-0 and pointer-events-none */}
-      <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
-        {/* CSS Noise Overlay for realistic wood grain tactile feel */}
-        <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
-        
-        {/* Typographic Watermark */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none mix-blend-overlay">
-          <h1 className="font-serif text-[25vw] font-bold text-[#f2ebe3] opacity-[0.02] tracking-tighter whitespace-nowrap">
-            FEZ
-          </h1>
-        </div>
-      </div>
+    <section className="relative w-full h-screen overflow-hidden bg-[#0a0604]">
+      {/* LAYER 1: Full-screen background photograph — lowest z-index */}
+      <Image
+        src="/images/hero-bg.jpg"
+        alt="Fez Dizayn - Lüks İç Mimarlık"
+        fill
+        priority
+        quality={90}
+        className="object-cover object-center -z-20"
+        sizes="100vw"
+      />
 
-      {/* FOREGROUND LAYER: strictly z-10 and pointer-events-auto for clickability */}
-      <div className="relative z-[10] h-full flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 text-center pointer-events-auto">
+      {/* LAYER 2: Semi-dark luxury gradient overlay — lets photo breathe in the middle */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0a0604]/85 via-[#0a0604]/25 to-[#0a0604]/90 pointer-events-none" />
+
+      {/* LAYER 3: Subtle vignette for cinematic depth */}
+      <div className="absolute inset-0 -z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 200px 60px rgba(10,6,4,0.5)' }} />
+
+      {/* FOREGROUND: Text & CTA — fully clickable above everything */}
+      <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 text-center pointer-events-auto">
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[#c9a96e] text-xs md:text-sm tracking-[0.3em] uppercase mb-6 font-light"
+          className="text-[#c9a96e] text-xs md:text-sm tracking-[0.35em] uppercase mb-8 font-light"
         >
-          Lüks İç Mimarlık Ajansı
+          İç Mimarlık · Wood Design · Dekorasyon
         </motion.p>
 
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
-          className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-[#f2ebe3] leading-[1.1] mb-10 max-w-5xl"
+          className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-stone-100 leading-[1.08] mb-6 max-w-5xl drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
         >
           Yaşam Alanlarınızı Yeniden Tanımlıyoruz
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-stone-300/80 text-sm md:text-base max-w-xl mb-12 leading-relaxed"
+        >
+          Halkalı, İstanbul merkezli lüks iç mimarlık ve özel ahşap tasarım atölyesi.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
         >
-          {/* Using Next.js Link for instantaneous client-side SPA routing */}
           <Link
             href="/projeler"
-            className="inline-block border border-[#c9a96e] hover:bg-[#c9a96e] hover:text-[#110e0a] text-[#f2ebe3] px-10 py-4 uppercase tracking-[0.2em] text-sm transition-colors duration-300 cursor-pointer pointer-events-auto"
+            className="inline-block border border-[#c9a96e]/80 bg-[#c9a96e]/10 backdrop-blur-sm hover:bg-[#c9a96e] hover:text-[#0a0604] text-stone-100 px-12 py-4 uppercase tracking-[0.2em] text-sm transition-all duration-400 cursor-pointer"
           >
             Projeleri Keşfet
           </Link>
         </motion.div>
       </div>
       
-      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#110e0a] to-transparent z-[5] pointer-events-none" />
+      {/* Bottom fade into next section */}
+      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-[#110e0a] to-transparent z-[5] pointer-events-none" />
     </section>
   );
 }
