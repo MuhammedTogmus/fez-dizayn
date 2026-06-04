@@ -22,7 +22,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[60vh] md:h-screen overflow-hidden flex flex-col justify-center">
+    <section className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col justify-center">
       {/* LAYER 1: Crossfading images at z-[0] — absolutely positioned, fill parent */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -63,7 +63,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
-          className="font-serif text-3xl sm:text-4xl md:text-7xl text-white leading-[1.1] mb-4 md:mb-6 max-w-4xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
+          className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1] mb-4 md:mb-6 max-w-4xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
         >
           Yaşam Alanlarınızı Yeniden Tanımlıyoruz
         </motion.h1>
@@ -72,7 +72,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/70 text-sm md:text-base max-w-xl mb-10 md:mb-12 leading-relaxed"
+          className="text-white/70 text-base md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed"
         >
           Halkalı, İstanbul merkezli lüks iç mimarlık ve özel ahşap tasarım atölyesi.
         </motion.p>

@@ -31,7 +31,7 @@ export default function Process() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-[#c9a96e] text-sm tracking-[0.3em] uppercase mb-4"
+            className="text-[#c9a96e] text-sm md:text-base tracking-[0.3em] uppercase mb-4"
           >
             Süreç
           </motion.p>
@@ -40,7 +40,7 @@ export default function Process() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#f2ebe3] leading-tight mb-4"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#f2ebe3] leading-tight mb-4"
           >
             Çalışma Sürecimiz
           </motion.h2>
@@ -49,7 +49,7 @@ export default function Process() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-[#b5a898] text-base leading-relaxed"
+            className="text-[#b5a898] text-base md:text-xl leading-relaxed"
           >
             Hayalinizdeki Mekana Giden Yol
           </motion.p>
@@ -75,12 +75,12 @@ export default function Process() {
               </span>
 
               {/* Title */}
-              <h3 className="font-serif text-xl md:text-2xl text-[#f2ebe3] mb-3 leading-snug">
+              <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#f2ebe3] mb-3 leading-snug">
                 {step.title}
               </h3>
 
               {/* Description */}
-              <p className="text-[#b5a898] text-sm md:text-base leading-relaxed">
+              <p className="text-[#b5a898] text-base md:text-lg leading-relaxed">
                 {step.desc}
               </p>
             </motion.div>

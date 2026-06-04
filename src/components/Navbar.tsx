@@ -67,7 +67,7 @@ export default function Navbar() {
             aria-label="Menüyü Aç/Kapat"
           >
             <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 10, backgroundColor: '#2A2421' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3' }}
+              animate={mobileOpen ? { rotate: 45, y: 10, backgroundColor: '#2C2420' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3' }}
               className="block h-[2px] w-8 origin-center transition-colors"
             />
             <motion.span
@@ -75,7 +75,7 @@ export default function Navbar() {
               className="block h-[2px] bg-[#f2ebe3] transition-all"
             />
             <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -10, backgroundColor: '#2A2421', width: '32px' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3', width: '16px' }}
+              animate={mobileOpen ? { rotate: -45, y: -10, backgroundColor: '#2C2420', width: '32px' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3', width: '16px' }}
               className="block h-[2px] origin-center transition-all"
             />
           </button>
@@ -89,34 +89,45 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20, transition: { delay: 0.3, duration: 0.5, ease: [0.76, 0, 0.24, 1] } }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] as any }}
-            className="fixed inset-0 z-[40] flex flex-col justify-center bg-[#F9F6F0] px-8 sm:px-16 pointer-events-auto"
+            className="fixed inset-0 z-[40] flex flex-col justify-center bg-[#EAE6DF] px-8 sm:px-16 pointer-events-auto"
           >
-            <div className="flex flex-col gap-10 mt-10 pl-6 sm:pl-12 md:pl-24">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0 },
+                show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
+                exit: { opacity: 0, transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+              }}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              className="flex flex-col items-center gap-8 md:gap-10 mt-10"
+            >
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.label}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ delay: 0.2 + i * 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                  variants={{
+                    hidden: { opacity: 0, y: 40 },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+                    exit: { opacity: 0, y: 20, transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] } }
+                  }}
                 >
                   <Link
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     onClick={() => setMobileOpen(false)}
-                    className="group flex items-center font-serif text-3xl sm:text-4xl md:text-5xl tracking-widest transition-colors text-[#2A2421] hover:text-[#c9a96e]"
+                    className="group flex items-center justify-center font-serif text-3xl sm:text-4xl md:text-5xl tracking-widest transition-colors text-[#2C2420] hover:text-[#c9a96e]"
                   >
                     <span className="text-sm md:text-base text-stone-400 mr-6 md:mr-8 font-sans tracking-normal group-hover:text-[#c9a96e] transition-colors">0{i + 1}</span>
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
             
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: 0.5, duration: 0.4 }}
-              className="absolute bottom-12 left-14 sm:left-28 md:left-40 text-[#8c857d] text-xs tracking-[0.2em] uppercase font-sans"
+              className="absolute bottom-12 left-0 right-0 text-center text-[#8c857d] text-xs md:text-sm tracking-[0.2em] uppercase font-sans"
             >
               Fez Dizayn &copy; {new Date().getFullYear()}
             </motion.div>

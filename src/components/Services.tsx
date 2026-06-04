@@ -49,7 +49,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-[#c9a96e] text-sm tracking-[0.3em] uppercase mb-4"
+            className="text-[#c9a96e] text-sm md:text-base tracking-[0.3em] uppercase mb-4"
           >
             Hizmetlerimiz
           </motion.p>
@@ -58,7 +58,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f2ebe3] leading-tight"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#f2ebe3] leading-tight"
           >
             Uzmanlık Alanlarımız
           </motion.h2>
@@ -82,11 +82,11 @@ export default function Services() {
                 {service.id}
               </span>
 
-              <h3 className="font-serif text-2xl text-[#f2ebe3] mb-4 group-hover:text-[#c9a96e] transition-colors duration-300">
+              <h3 className="font-serif text-2xl md:text-3xl text-[#f2ebe3] mb-4 group-hover:text-[#c9a96e] transition-colors duration-300">
                 {service.title}
               </h3>
 
-              <p className="text-[#b5a898] text-sm md:text-base leading-relaxed relative z-10">
+              <p className="text-[#b5a898] text-base md:text-lg leading-relaxed relative z-10">
                 {service.desc}
               </p>
 
