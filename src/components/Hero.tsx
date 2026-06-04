@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 // Dynamic import with SSR false guarantees the server won't crash trying to render WebGL
 const SceneDynamic = dynamic(() => import('./Scene'), { 
@@ -30,7 +31,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[#110e0a]">
+    <section className="relative w-full h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/20 via-[#110e0a] to-[#0a0806]">
       {/* BACKGROUND LAYER: strictly z-0 and pointer-events-none */}
       <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
         {/* CSS Grid Overlay */}
@@ -72,13 +73,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          {/* Using a standard Next.js-compatible anchor with pointer events enabled */}
-          <a
-            href="#projeler"
+          {/* Using Next.js Link for instantaneous client-side SPA routing */}
+          <Link
+            href="/projeler"
             className="inline-block border border-[#c9a96e] hover:bg-[#c9a96e] hover:text-[#110e0a] text-[#f2ebe3] px-10 py-4 uppercase tracking-[0.2em] text-sm transition-colors duration-300 cursor-pointer pointer-events-auto"
           >
             Projeleri Keşfet
-          </a>
+          </Link>
         </motion.div>
       </div>
       
