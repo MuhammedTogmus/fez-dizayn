@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { label: 'Anasayfa', href: '/' },
@@ -16,6 +17,24 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, external?: boolean) => {
+    if (external) return;
+    
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault();
+      setMobileOpen(false);
+      const hash = href.substring(1);
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', href);
+      }
+    } else {
+      setMobileOpen(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -51,7 +70,7 @@ export default function Navbar() {
 
         <div className="flex w-full items-center justify-between px-6 md:px-12 lg:px-24 xl:px-32">
           
-          <Link href="/" className="relative z-[60]" onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}>
+          <Link href="/" className="relative z-[60]" onClick={(e) => handleNavClick(e, '/')}>
             <span className={`font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold uppercase transition-colors duration-300 ${mobileOpen ? 'text-[#E8DCC4]' : 'text-[#f2ebe3]'}`}>
               Fez Dizayn
             </span>
@@ -64,6 +83,7 @@ export default function Navbar() {
                 href={link.href}
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
+                onClick={(e) => handleNavClick(e, link.href, link.external)}
                 className={`group relative text-sm tracking-[0.15em] uppercase transition-colors ${
                   link.external ? 'text-[#c9a96e] hover:text-[#d4b97a] font-medium' : 'text-[#f2ebe3]/80 hover:text-[#c9a96e]'
                 }`}
@@ -141,7 +161,7 @@ export default function Navbar() {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href, link.external)}
                     className="group flex flex-col items-center justify-center transition-colors text-[#E8DCC4] hover:text-[#c9a96e] text-center"
                   >
                     <span className="block text-sm text-[#E8DCC4]/50 mb-1 font-sans tracking-widest group-hover:text-[#c9a96e]/70 transition-colors">
