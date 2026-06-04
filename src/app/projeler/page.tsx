@@ -51,9 +51,9 @@ export default function PortfolioPage() {
                 key={item.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px" }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="group relative overflow-hidden rounded-sm bg-[#1a1715] aspect-[4/3]"
+                className="group relative overflow-hidden rounded-sm bg-[#1a1715] aspect-[4/3] will-change-transform transform-gpu"
               >
                 {item.type === 'video' ? (
                   <video 

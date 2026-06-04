@@ -21,7 +21,7 @@ export default function Contact() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px" }}
               transition={{ duration: 0.6 }}
               className="text-[#c9a96e] text-sm tracking-[0.3em] uppercase mb-4"
             >
@@ -30,7 +30,7 @@ export default function Contact() {
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px" }}
               transition={{ duration: 0.8 }}
               className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#f2ebe3] leading-tight mb-6"
             >
@@ -39,7 +39,7 @@ export default function Contact() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-[#b5a898] text-base md:text-lg leading-relaxed max-w-lg"
             >
@@ -55,9 +55,9 @@ export default function Contact() {
                 key={item.label}
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px" }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="border-l-2 border-[#8b6f47]/40 pl-6"
+                className="border-l-2 border-[#8b6f47]/40 pl-6 will-change-transform transform-gpu"
               >
                 <p className="text-[#c9a96e] text-xs tracking-[0.2em] uppercase mb-2">
                   {item.label}
@@ -85,9 +85,9 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.8 }}
-          className="bg-gradient-to-br from-[#2e1b10] via-[#1a0f08] to-[#0a0604] border border-[#c9a96e]/30 shadow-[0_0_60px_rgba(201,169,110,0.1)] p-10 sm:p-16 md:p-24 lg:p-32 flex flex-col items-center text-center rounded-sm relative overflow-hidden"
+          className="bg-gradient-to-br from-[#2e1b10] via-[#1a0f08] to-[#0a0604] border border-[#c9a96e]/30 shadow-[0_0_60px_rgba(201,169,110,0.1)] p-10 sm:p-16 md:p-24 lg:p-32 flex flex-col items-center text-center rounded-sm relative overflow-hidden will-change-transform transform-gpu"
         >
           {/* Subtle noise overlay for texture */}
           <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />

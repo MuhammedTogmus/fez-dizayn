@@ -53,7 +53,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
         className={`fixed top-0 left-0 w-full z-[50] transition-all duration-500 pointer-events-auto ${
-          scrolled ? 'bg-[#110e0a]/90 backdrop-blur-xl border-b border-[#2e2720]/50 py-4' : 'bg-transparent py-6'
+          scrolled ? 'bg-[#110e0a]/90 backdrop-blur-md border-b border-[#2e2720]/50 py-4' : 'bg-transparent py-6'
         }`}
       >
         {/* Preload the heavy background image so there's no delay on first open */}
@@ -123,7 +123,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20, transition: { delay: 0.3, duration: 0.5, ease: [0.76, 0, 0.24, 1] } }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] as any }}
-            className="fixed inset-0 z-[40] flex flex-col justify-center px-8 sm:px-16 pointer-events-auto overflow-hidden"
+            className="fixed inset-0 z-[40] flex flex-col justify-center px-8 sm:px-16 pointer-events-auto overflow-hidden will-change-transform transform-gpu"
           >
             <div className="absolute inset-0 z-[-1]">
               <Image 
@@ -146,7 +146,7 @@ export default function Navbar() {
               initial="hidden"
               animate="show"
               exit="exit"
-              className="flex flex-col items-center gap-8 md:gap-10 mt-10"
+              className="flex flex-col items-center gap-8 md:gap-10 mt-10 will-change-transform transform-gpu"
             >
               {navLinks.map((link, i) => (
                 <motion.div

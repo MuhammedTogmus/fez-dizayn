@@ -29,7 +29,7 @@ export default function Process() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.6 }}
             className="text-[#c9a96e] text-sm md:text-base tracking-[0.3em] uppercase mb-4"
           >
@@ -38,7 +38,7 @@ export default function Process() {
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.8 }}
             className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#f2ebe3] leading-tight mb-4"
           >
@@ -47,7 +47,7 @@ export default function Process() {
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-[#b5a898] text-base md:text-xl leading-relaxed"
           >
@@ -62,9 +62,9 @@ export default function Process() {
               key={step.number}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group"
+              className="group will-change-transform transform-gpu"
             >
               {/* Top border line */}
               <div className="border-t border-stone-600/50 pt-6 mb-2" />

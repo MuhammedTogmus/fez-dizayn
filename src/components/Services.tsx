@@ -47,7 +47,7 @@ export default function Services() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.6 }}
             className="text-[#c9a96e] text-sm md:text-base tracking-[0.3em] uppercase mb-4"
           >
@@ -56,7 +56,7 @@ export default function Services() {
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.8 }}
             className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#f2ebe3] leading-tight"
           >
@@ -71,9 +71,9 @@ export default function Services() {
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative bg-[#110e0a] border border-[#2e2720]/50 p-8 md:p-10 lg:p-12 hover:border-[#c9a96e]/30 transition-colors duration-500 overflow-hidden rounded-sm"
+              className="group relative bg-[#110e0a] border border-[#2e2720]/50 p-8 md:p-10 lg:p-12 hover:border-[#c9a96e]/30 transition-colors duration-500 overflow-hidden rounded-sm will-change-transform transform-gpu"
             >
               {/* Subtle hover gradient background */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#c9a96e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
