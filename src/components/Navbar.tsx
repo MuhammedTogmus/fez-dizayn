@@ -67,7 +67,7 @@ export default function Navbar() {
             aria-label="Menüyü Aç/Kapat"
           >
             <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 10, backgroundColor: '#c9a96e' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3' }}
+              animate={mobileOpen ? { rotate: 45, y: 10, backgroundColor: '#2A2421' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3' }}
               className="block h-[2px] w-8 origin-center transition-colors"
             />
             <motion.span
@@ -75,7 +75,7 @@ export default function Navbar() {
               className="block h-[2px] bg-[#f2ebe3] transition-all"
             />
             <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -10, backgroundColor: '#c9a96e', width: '32px' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3', width: '16px' }}
+              animate={mobileOpen ? { rotate: -45, y: -10, backgroundColor: '#2A2421', width: '32px' } : { rotate: 0, y: 0, backgroundColor: '#f2ebe3', width: '16px' }}
               className="block h-[2px] origin-center transition-all"
             />
           </button>
@@ -85,30 +85,29 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }}
-            className="fixed inset-0 z-[40] flex flex-col justify-center bg-[#110e0a] px-8 sm:px-16 pointer-events-auto border-l border-[#2e2720]"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20, transition: { delay: 0.3, duration: 0.5, ease: [0.76, 0, 0.24, 1] } }}
+            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] as any }}
+            className="fixed inset-0 z-[40] flex flex-col justify-center bg-[#F9F6F0] px-8 sm:px-16 pointer-events-auto"
           >
-            <div className="flex flex-col gap-10 mt-10">
+            <div className="flex flex-col gap-10 mt-10 pl-6 sm:pl-12 md:pl-24">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.label}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 30 }}
-                  transition={{ delay: 0.1 + i * 0.1, duration: 0.5, ease: 'easeOut' }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ delay: 0.2 + i * 0.1, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
                 >
                   <Link
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     onClick={() => setMobileOpen(false)}
-                    className={`font-serif text-3xl sm:text-4xl tracking-widest transition-colors ${
-                      link.external ? 'text-[#c9a96e] hover:text-[#d4a24e]' : 'text-[#f2ebe3] hover:text-[#c9a96e]'
-                    }`}
+                    className="group flex items-center font-serif text-3xl sm:text-4xl md:text-5xl tracking-widest transition-colors text-[#2A2421] hover:text-[#c9a96e]"
                   >
+                    <span className="text-sm md:text-base text-stone-400 mr-6 md:mr-8 font-sans tracking-normal group-hover:text-[#c9a96e] transition-colors">0{i + 1}</span>
                     {link.label}
                   </Link>
                 </motion.div>
@@ -116,8 +115,8 @@ export default function Navbar() {
             </div>
             
             <motion.div 
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-              className="absolute bottom-12 left-8 sm:left-16 text-[#b5a898] text-xs tracking-[0.2em] uppercase"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: 0.5, duration: 0.4 }}
+              className="absolute bottom-12 left-14 sm:left-28 md:left-40 text-[#8c857d] text-xs tracking-[0.2em] uppercase font-sans"
             >
               Fez Dizayn &copy; {new Date().getFullYear()}
             </motion.div>
