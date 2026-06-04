@@ -22,7 +22,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-[85vh] md:min-h-screen w-full overflow-hidden flex flex-col justify-center">
       {/* LAYER 1: Crossfading images at z-[0] — absolutely positioned, fill parent */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -49,12 +49,12 @@ export default function Hero() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/60 via-black/20 to-black/60 pointer-events-none" />
 
       {/* FOREGROUND: Text & CTA at z-[10] */}
-      <div className="relative z-[10] h-full flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 text-center pointer-events-auto">
+      <div className="relative z-[10] flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 text-center pointer-events-auto py-24 md:py-0">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[#c9a96e] text-xs md:text-sm tracking-[0.35em] uppercase mb-8 font-light"
+          className="text-[#c9a96e] text-xs md:text-sm tracking-[0.35em] uppercase mb-6 md:mb-8 font-light"
         >
           İç Mimarlık · Wood Design · Dekorasyon
         </motion.p>
@@ -63,7 +63,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
-          className="font-serif text-4xl sm:text-5xl md:text-7xl text-white leading-[1.1] mb-6 max-w-4xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
+          className="font-serif text-4xl sm:text-5xl md:text-7xl text-white leading-[1.1] mb-5 md:mb-6 max-w-4xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
         >
           Yaşam Alanlarınızı Yeniden Tanımlıyoruz
         </motion.h1>
@@ -72,7 +72,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/70 text-sm md:text-base max-w-xl mb-12 leading-relaxed"
+          className="text-white/70 text-sm md:text-base max-w-xl mb-10 md:mb-12 leading-relaxed"
         >
           Halkalı, İstanbul merkezli lüks iç mimarlık ve özel ahşap tasarım atölyesi.
         </motion.p>
@@ -84,7 +84,7 @@ export default function Hero() {
         >
           <Link
             href="/projeler"
-            className="inline-block border border-[#c9a96e]/80 bg-[#c9a96e]/10 backdrop-blur-sm hover:bg-[#c9a96e] hover:text-[#0a0604] text-white px-12 py-4 uppercase tracking-[0.2em] text-sm transition-all duration-300 cursor-pointer"
+            className="inline-block border border-[#c9a96e]/80 bg-[#c9a96e]/10 backdrop-blur-sm hover:bg-[#c9a96e] hover:text-[#0a0604] text-white px-10 md:px-12 py-4 uppercase tracking-[0.2em] text-sm transition-all duration-300 cursor-pointer"
           >
             Projeleri Keşfet
           </Link>
