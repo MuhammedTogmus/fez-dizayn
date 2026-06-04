@@ -37,10 +37,10 @@ export default function Hero() {
             src={heroImages[currentIndex]}
             alt="Fez Dizayn - Lüks İç Mimarlık"
             fill
-            priority
-            quality={90}
+            priority={currentIndex === 0}
+            quality={75}
             className="object-cover object-center"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 100vw"
           />
         </motion.div>
       </AnimatePresence>

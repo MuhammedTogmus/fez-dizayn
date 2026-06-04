@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Process from '@/components/Process';
-import Services from '@/components/Services';
-import Contact from '@/components/Contact';
 import ScrollToTop from '@/components/ScrollToTop';
+import dynamic from 'next/dynamic';
+
+const Process = dynamic(() => import('@/components/Process'));
+const Contact = dynamic(() => import('@/components/Contact'));
+const Services = dynamic(() => import('@/components/Services'));
 
 export default function Home() {
   return (
