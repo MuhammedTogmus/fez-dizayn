@@ -49,7 +49,7 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-12 lg:px-16">
+        <div className="flex w-full items-center justify-between px-6 md:px-12 lg:px-24 xl:px-32">
           
           <Link href="/" className="relative z-[60]" onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}>
             <span className={`font-serif text-xl md:text-2xl tracking-[0.2em] font-semibold uppercase transition-colors duration-300 ${mobileOpen ? 'text-[#E8DCC4]' : 'text-[#f2ebe3]'}`}>

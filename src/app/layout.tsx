@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
       {/* We removed all custom cursors, ensuring the default system cursor always works */}
-      <body className="min-h-full flex flex-col font-sans bg-[#110e0a] text-[#f2ebe3]">
+      <body className="min-h-full flex flex-col font-sans bg-[#110e0a] text-[#f2ebe3] overflow-x-hidden">
         {children}
         <WhatsAppButton />
       </body>
