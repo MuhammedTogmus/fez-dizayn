@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import Process from '@/components/Process';
 import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -10,6 +11,7 @@ export default function Home() {
       <ScrollToTop />
       <Navbar />
       <Hero />
+      <Process />
       <Contact />
       <Services />
       

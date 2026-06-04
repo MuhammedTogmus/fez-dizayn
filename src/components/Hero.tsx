@@ -1,32 +1,59 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const heroImages = [
+  '/images/hero-bg-1.webp',
+  '/images/hero-bg-2.jpg',
+  '/images/hero-bg-3.webp',
+];
+
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#0a0604]">
-      {/* LAYER 1: Full-screen background photograph — lowest z-index */}
-      <Image
-        src="/images/hero-bg.webp"
-        alt="Fez Dizayn - Lüks İç Mimarlık"
-        fill
-        priority
-        quality={90}
-        className="object-cover object-center -z-20"
-        sizes="100vw"
-      />
+      {/* LAYER 1: Crossfading image carousel — lowest z-index */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: 'easeInOut' }}
+          className="absolute inset-0 -z-20"
+        >
+          <Image
+            src={heroImages[currentIndex]}
+            alt="Fez Dizayn - Lüks İç Mimarlık"
+            fill
+            priority
+            quality={90}
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* LAYER 2: Semi-dark luxury gradient overlay — lets photo breathe in the middle */}
+      {/* LAYER 2: Semi-dark luxury gradient overlay */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0a0604]/85 via-[#0a0604]/25 to-[#0a0604]/90 pointer-events-none" />
 
-      {/* LAYER 3: Subtle vignette for cinematic depth */}
+      {/* LAYER 3: Cinematic vignette */}
       <div className="absolute inset-0 -z-10 pointer-events-none" style={{ boxShadow: 'inset 0 0 200px 60px rgba(10,6,4,0.5)' }} />
 
-      {/* FOREGROUND: Text & CTA — fully clickable above everything */}
+      {/* FOREGROUND: Text & CTA */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 text-center pointer-events-auto">
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -35,7 +62,7 @@ export default function Hero() {
           İç Mimarlık · Wood Design · Dekorasyon
         </motion.p>
 
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
@@ -66,7 +93,19 @@ export default function Hero() {
           </Link>
         </motion.div>
       </div>
-      
+
+      {/* Carousel indicator dots */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-3 pointer-events-none">
+        {heroImages.map((_, i) => (
+          <div
+            key={i}
+            className={`h-[2px] rounded-full transition-all duration-700 ${
+              i === currentIndex ? 'w-8 bg-[#c9a96e]' : 'w-4 bg-white/30'
+            }`}
+          />
+        ))}
+      </div>
+
       {/* Bottom fade into next section */}
       <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-[#110e0a] to-transparent z-[5] pointer-events-none" />
     </section>
