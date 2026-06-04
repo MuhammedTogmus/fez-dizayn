@@ -31,8 +31,19 @@ export default function Hero() {
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#110e0a]">
-      {/* BACKGROUND LAYER: strictly z-0 and pointer-events-none so it doesn't block clicks */}
-      <div className="absolute inset-0 z-[0] pointer-events-none">
+      {/* BACKGROUND LAYER: strictly z-0 and pointer-events-none */}
+      <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
+        {/* CSS Grid Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#2e2720_1px,transparent_1px),linear-gradient(to_bottom,#2e2720_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] opacity-20" />
+        
+        {/* Typographic Watermark */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none mix-blend-overlay">
+          <h1 className="font-serif text-[25vw] font-bold text-[#f2ebe3] opacity-[0.03] tracking-tighter whitespace-nowrap">
+            FEZ
+          </h1>
+        </div>
+
+        {/* 3D WebGL Scene */}
         {mount3D && <SceneDynamic />}
       </div>
 

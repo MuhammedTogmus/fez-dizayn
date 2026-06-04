@@ -10,8 +10,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Projects />
-      <Services />
       <Contact />
+      <Services />
       
       <footer className="w-full bg-[#1a1510] py-16 text-center border-t border-white/5">
         <p className="text-[#b5a898] text-sm tracking-widest mb-3">&copy; {new Date().getFullYear()} Fez Dizayn. Tüm hakları saklıdır.</p>
