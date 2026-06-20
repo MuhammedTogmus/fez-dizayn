@@ -77,7 +77,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
-          className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1] mb-4 md:mb-6 max-w-4xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
+          className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1] mb-4 md:mb-6 max-w-4xl"
+          style={{ textShadow: '0 2px 16px rgba(0,0,0,0.4)' }}
         >
           Yaşam Alanlarınızı Yeniden Tanımlıyoruz
         </motion.h1>
@@ -98,7 +99,7 @@ export default function Hero() {
         >
           <Link
             href="/projeler"
-            className="inline-block border border-[#c9a96e]/80 bg-[#c9a96e]/10 backdrop-blur-sm hover:bg-[#c9a96e] hover:text-[#0a0604] text-white px-10 md:px-12 py-4 uppercase tracking-[0.2em] text-sm transition-all duration-300 cursor-pointer"
+            className="inline-block border border-[#c9a96e]/80 bg-[#c9a96e]/15 hover:bg-[#c9a96e] hover:text-[#0a0604] text-white px-10 md:px-12 py-4 uppercase tracking-[0.2em] text-sm transition-all duration-300 cursor-pointer"
           >
             Projeleri Keşfet
           </Link>

@@ -101,7 +101,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
         className={`fixed top-0 left-0 w-full z-[50] transition-all duration-500 pointer-events-auto ${
-          scrolled ? 'bg-[#110e0a]/90 backdrop-blur-md border-b border-[#2e2720]/50 py-4' : 'bg-transparent py-6'
+          scrolled ? 'bg-[#110e0a]/95 border-b border-[#2e2720]/50 py-4' : 'bg-transparent py-6'
         }`}
       >
         <div className="flex w-full items-center justify-between px-6 md:px-12 lg:px-24 xl:px-32">
