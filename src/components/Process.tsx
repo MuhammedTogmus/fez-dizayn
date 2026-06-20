@@ -63,8 +63,8 @@ export default function Process() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px" }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group will-change-transform transform-gpu"
+              transition={{ duration: 0.6, delay: Math.min(index * 0.15, 0.3) }}
+              className="group"
             >
               {/* Top border line */}
               <div className="border-t border-stone-600/50 pt-6 mb-2" />

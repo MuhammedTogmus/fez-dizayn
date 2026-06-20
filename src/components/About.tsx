@@ -13,7 +13,7 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.8 }}
-          className="lg:w-1/2 flex flex-col justify-center will-change-transform transform-gpu"
+          className="lg:w-1/2 flex flex-col justify-center"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[1px] bg-[#c9a96e]" />
@@ -43,7 +43,7 @@ export default function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="lg:w-1/2 w-full relative will-change-transform transform-gpu"
+          className="lg:w-1/2 w-full relative"
         >
           <div className="relative aspect-[4/5] md:aspect-square w-full rounded-sm overflow-hidden border border-[#2e2720]">
             <div className="absolute inset-0 bg-[#16120e] flex items-center justify-center p-6 md:p-10">

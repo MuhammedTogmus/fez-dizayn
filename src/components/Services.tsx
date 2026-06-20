@@ -72,8 +72,8 @@ export default function Services() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "0px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative bg-[#110e0a] border border-[#2e2720]/50 p-8 md:p-10 lg:p-12 hover:border-[#c9a96e]/30 transition-colors duration-500 overflow-hidden rounded-sm will-change-transform transform-gpu"
+              transition={{ duration: 0.6, delay: Math.min(index * 0.1, 0.3) }}
+              className="group relative bg-[#110e0a] border border-[#2e2720]/50 p-8 md:p-10 lg:p-12 hover:border-[#c9a96e]/30 transition-colors duration-500 overflow-hidden rounded-sm"
             >
               {/* Subtle hover gradient background */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#c9a96e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

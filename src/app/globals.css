@@ -240,3 +240,45 @@ p {
     padding-right: 8rem;
   }
 }
+
+/* ============================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce animation durations on mobile */
+  * {
+    animation-duration: 0.3s !important;
+  }
+  
+  /* Disable backdrop-filter on mobile — very expensive */
+  .glass,
+  .glass-light {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  
+  /* Disable hover transforms on touch devices */
+  .group:hover .group-hover\:scale-105 {
+    transform: none;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Simple fade-in for elements that don't need framer-motion */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}

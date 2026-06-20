@@ -21,7 +21,7 @@ export default function Hero() {
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
@@ -34,12 +34,7 @@ export default function Hero() {
   return (
     <section className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col justify-center">
       
-      {/* PRELOADER: Force browser to download all slider images immediately in the background */}
-      <div className="opacity-0 pointer-events-none absolute w-0 h-0 overflow-hidden" aria-hidden="true">
-        {heroImages.map((src) => (
-          <Image key={src} src={src} alt="preload" width={10} height={10} quality={75} priority />
-        ))}
-      </div>
+
 
       {/* LAYER 1: Crossfading images at z-[0] — absolutely positioned, fill parent */}
       <AnimatePresence mode="sync">
@@ -48,7 +43,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: 'easeInOut' }}
+          transition={{ duration: 1, ease: 'easeInOut' }}
           className="absolute inset-0 z-[0]"
         >
           <Image
@@ -56,9 +51,10 @@ export default function Hero() {
             alt="Fez Dizayn - Lüks İç Mimarlık"
             fill
             priority={currentIndex === 0}
-            quality={75}
+            loading={currentIndex === 0 ? 'eager' : 'lazy'}
+            quality={60}
             className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 100vw"
+            sizes="100vw"
           />
         </motion.div>
       </AnimatePresence>
@@ -112,7 +108,7 @@ export default function Hero() {
       {/* Slider Controls (Prev/Next) */}
       <button 
         onClick={handlePrev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-[20] w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#110e0a]/40 hover:bg-[#c9a96e]/20 border border-white/10 hover:border-[#c9a96e]/50 text-white hover:text-[#c9a96e] backdrop-blur-sm transition-all duration-300 pointer-events-auto group"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-[20] w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#110e0a]/70 hover:bg-[#c9a96e]/20 border border-white/10 hover:border-[#c9a96e]/50 text-white hover:text-[#c9a96e] transition-all duration-300 pointer-events-auto group"
         aria-label="Önceki Görsel"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform duration-300">
@@ -122,7 +118,7 @@ export default function Hero() {
 
       <button 
         onClick={handleNext}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-[20] w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#110e0a]/40 hover:bg-[#c9a96e]/20 border border-white/10 hover:border-[#c9a96e]/50 text-white hover:text-[#c9a96e] backdrop-blur-sm transition-all duration-300 pointer-events-auto group"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-[20] w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#110e0a]/70 hover:bg-[#c9a96e]/20 border border-white/10 hover:border-[#c9a96e]/50 text-white hover:text-[#c9a96e] transition-all duration-300 pointer-events-auto group"
         aria-label="Sonraki Görsel"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform duration-300">

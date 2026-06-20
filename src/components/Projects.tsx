@@ -39,7 +39,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: Math.min(index * 0.1, 0.2) }}
               className={`group relative overflow-hidden bg-[#1a1510] rounded-sm cursor-pointer ${index % 2 === 1 ? 'md:mt-16' : ''}`}
             >
               <a href="/projeler" className="block relative w-full aspect-[4/5] overflow-hidden">

@@ -52,8 +52,8 @@ export default function PortfolioPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "0px" }}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="group relative overflow-hidden rounded-sm bg-[#1a1715] aspect-[4/3] will-change-transform transform-gpu"
+                transition={{ duration: 0.6, delay: Math.min(index * 0.08, 0.3) }}
+                className="group relative overflow-hidden rounded-sm bg-[#1a1715] aspect-[4/3]"
               >
                 {item.type === 'video' ? (
                   <video 
@@ -62,6 +62,7 @@ export default function PortfolioPage() {
                     playsInline 
                     loop 
                     autoPlay 
+                    preload="metadata"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 ) : (
@@ -70,7 +71,8 @@ export default function PortfolioPage() {
                     alt={item.title} 
                     fill 
                     priority={index < 3}
-                    quality={85}
+                    {...(index >= 3 ? { loading: 'lazy' } : {})}
+                    quality={70}
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
