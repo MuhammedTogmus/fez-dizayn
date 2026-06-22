@@ -99,7 +99,7 @@ export default function Contact() {
 
           {/* WhatsApp CTA Button */}
           <a
-            href="https://wa.me/905319317851"
+            href="https://wa.me/905319317851?text=Merhaba!%0A%C3%9Cr%C3%BCnlerinizden%20biriyle%20ilgileniyorum."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-4 bg-[#25D366] hover:bg-[#22c55e] hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(37,211,102,0.25)] active:scale-[0.97] text-[#110e0a] font-semibold px-10 md:px-14 py-5 text-base md:text-lg uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer rounded-sm"

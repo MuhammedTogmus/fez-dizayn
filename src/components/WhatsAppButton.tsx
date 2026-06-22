@@ -3,7 +3,7 @@
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/905319317851"
+      href="https://wa.me/905319317851?text=Merhaba!%0A%C3%9Cr%C3%BCnlerinizden%20biriyle%20ilgileniyorum."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-[100] flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] text-white rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] hover:scale-110 active:scale-95 transition-all duration-300 animate-fadeIn"
